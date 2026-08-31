@@ -1,0 +1,30 @@
+.landing-page{
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.15),
+            rgba(255,255,255,.15)
+        ),
+        url("../assets/hero-bg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height:100vh;
+}
+
+/* Glass overlay */
+
+.overlay{
+
+    min-height:100vh;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(2px);
+
+    display:flex;
+
+    flex-direction:column;
+}

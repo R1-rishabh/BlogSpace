@@ -1,0 +1,163 @@
+.full-page{
+    background:#FDFBD4;
+
+    min-height:100vh;
+}
+.all-posts-page {
+    min-height: 100vh;
+    padding: 60px 7%;
+}
+
+.all-posts-header {
+    max-width: 750px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.page-label {
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.all-posts-header h1 {
+    font-size: 52px;
+    margin: 0 0 15px;
+    color: #111827;
+}
+
+.all-posts-header p:last-child {
+    color: #64748b;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.posts-grid {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.post-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 22px;
+    padding: 28px;
+
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+.post-card-top {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.post-author {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.post-card h2 {
+    color: #111827;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.post-card p {
+    color: #64748b;
+    line-height: 1.7;
+    min-height: 80px;
+}
+
+.post-card a {
+    display: inline-block;
+    margin-top: 15px;
+
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.post-card a:hover {
+    text-decoration: underline;
+}
+.search-bar-container {
+    max-width: 500px;
+    margin: 0 auto 32px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e0;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #1e1b4b;
+}
+.posts-message {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.posts-message h2 {
+    color: #111827;
+}
+
+.posts-message p {
+    color: #64748b;
+}
+
+.create-post-btn {
+    margin-top: 20px;
+
+    border: none;
+    border-radius: 12px;
+    padding: 13px 22px;
+
+    background: #2563eb;
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .posts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .all-posts-header h1 {
+        font-size: 40px;
+    }
+}
