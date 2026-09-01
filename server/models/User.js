@@ -26,6 +26,12 @@ const userSchema = new Schema(
         type:String,
         default:"",
         trim:true
+    },
+    resetPasswordToken:{
+        type : String
+    },
+    resetPasswordExpires:{
+        type:Date
     }
     },{timestamps : true}
 

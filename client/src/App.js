@@ -7,6 +7,8 @@ import AllPosts from "./pages/AllPosts";
 import EditProfile from "./pages/EditProfile";
 import Profile from "./pages/Profile.js";
 import PublicProfile from "./pages/PublicProfile.js";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 
 import { BrowserRouter, Routes, Route ,useLocation} from "react-router-dom";
@@ -39,6 +41,10 @@ function AnimatedRoutes() {
                 <Route path="/edit-profile" element={<EditProfile />} />
 
                 <Route path="/user/:id" element ={<PublicProfile/> } />
+
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+
+                <Route path="/reset-password/:token" element={<ResetPassword />} />
 
             </Routes>
         </AnimatePresence>
