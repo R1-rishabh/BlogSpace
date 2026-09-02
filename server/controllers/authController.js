@@ -2,6 +2,9 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto"); 
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const registerUser = async (req , res) =>{
     try{
@@ -27,16 +30,12 @@ const loginUser = async (req,res) => {
 
     const user = await User.findOne({email});
 
-    console.log("USER FOUND:", user);
-
     if(!user){
         return res.status(401).json({
             message:"Invalid Credentials"
         })
     } 
     const isMatch = await bcrypt.compare(password, user.password);
-
-    console.log("PASSWORD MATCH:", isMatch);
 
     if(!isMatch){
         return res.status(401).json({
@@ -87,15 +86,32 @@ const forgotPassword = async(req , res) => {
 
         await user.save();
 
-        const resetLink = `http://localhost:3000/reset-password/${resetToken}`;
+        const resetLink = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
 
-        console.log("============================");
-        console.log("PASSWORD RESET LINK (dev only ) :");
-        console.log(resetLink);
-        console.log("================================");
+        await resend.emails.send({
+            from: "BlogSpace <onboarding@resend.dev>",
+            to: user.email,
+            subject: "Reset you BlogSpace password",
+            html:`
+                <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto;">
+                    <h2 style="color: #111827;">Reset your password</h2>
+                    <p style="color: #4b5563; font-size: 15px; line-height: 1.6;">
+                        We received a request to reset your BlogSpace password. Click the button below to set a new password. This link will expire in 15 minutes.
+                    </p>
+                    <a href="${resetLink}" style="display:inline-block; margin-top:16px; padding:14px 28px; background:#2563eb; color:white; text-decoration:none; border-radius:10px; font-weight:600;">
+                        Reset Password
+                    </a>
+                    <p style="color: #9ca3af; font-size: 13px; margin-top: 24px;">
+                        If you didn't request this, you can safely ignore this email.
+                    </p>
+                </div>
+            `
+        });
+
+        console.log("Password reset email sent to:",user.email);
 
         return res.status(200).json({
-            message: "Password reset link generated. Check server console."
+            message: "Password reset link has been sent to your email."
         });
 
     } catch(error){

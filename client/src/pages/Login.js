@@ -97,6 +97,11 @@ function Login(){
                             />
 
                         </div>
+                        <p className="forgot-password-link">
+                            <span onClick={() => navigate("/forgot-password")}>
+                                Forgot Password?
+                            </span>
+                        </p>
                         <button
                             type="submit"
                             className="login-btn"
@@ -115,11 +120,7 @@ function Login(){
                             Create Account
                         </span>
                     </p>
-                    <p className="forgot-password-link" style={{textAlign: "right", marginTop: "-10px"}}>
-                        <span onClick={() => navigate("/forgot-password")} style={{color: "#2563eb", cursor: "pointer", fontWeight: 600, fontSize: "14px"}}>
-                            Forgot Password?
-                        </span>
-                    </p>
+                   
                 </div>
             </div>
         </PageLayout>

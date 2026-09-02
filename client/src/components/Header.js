@@ -1,10 +1,35 @@
 import "./Header.css";
+import { useState , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaPenNib, FaArrowRight, FaBookOpen, FaUsers } from "react-icons/fa";
-
+import api from "../api/axios";
 function Header() {
 
     const navigate = useNavigate();
+
+    const [stats , setStats] = useState({
+        totalPosts : 0,
+        totalViews : 0,
+        totalAuthors : 0
+    });
+
+    useEffect(()=>{
+        api 
+            .get("/posts/stats")
+            .then((response) => {
+                setStats(response.data);
+            })
+            .catch((error) => {
+                console.log("Error fetching stats:",error);
+            });
+    } , []);
+
+    const formatNumber = (num) => {
+        if(num >=1000){
+            return (num / 1000) .toFixed(1) + "K";
+        }
+        return num;
+    };
 
     return (
 
@@ -62,7 +87,7 @@ function Header() {
 
                     <div>
 
-                        <h3>24</h3>
+                        <h3>{formatNumber(stats.totalPosts)}</h3>
 
                         <span>Articles</span>
 
@@ -76,7 +101,7 @@ function Header() {
 
                     <div>
 
-                        <h3>1.2K</h3>
+                        <h3>{formatNumber(stats.totalViews)}</h3>
 
                         <span>Readers</span>
 
@@ -90,7 +115,7 @@ function Header() {
 
                     <div>
 
-                        <h3>8</h3>
+                        <h3>{formatNumber(stats.totalAuthors)}</h3>
 
                         <span>Authors</span>
 

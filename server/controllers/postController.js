@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 const createPost = async (req , res) =>{
     try{
@@ -154,7 +155,29 @@ const getMyPosts = async(req,res) => {
             message: "Server Error"
         });
     }
-}
+};
+
+const getStats = async(req , res) =>{
+    try{
+        const totalPosts = await Post.countDocuments();
+
+        const posts = await Post.find().select("views");
+        const totalViews = posts.reduce((sum , post) => sum + (post.views || 0),0);
+
+        const totalAuthors = await User.countDocuments();
+
+        return res.status(200).json({
+            totalPosts,
+            totalViews,
+            totalAuthors
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message:"Server Error"
+        });
+    }
+};
 
 module.exports = {
     createPost,
@@ -162,5 +185,6 @@ module.exports = {
     getPostById,
     updatePost,
     deletePost,
-    getMyPosts
+    getMyPosts,
+    getStats
 };

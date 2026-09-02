@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import PageLayout from "../layouts/PageLayout";
 import "./Home.css";
 import { useState,useEffect } from "react";
-import axios from "axios";
 import api from "../api/axios"
 
 function Home(){

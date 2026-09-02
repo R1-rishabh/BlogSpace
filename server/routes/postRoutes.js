@@ -9,14 +9,17 @@ const {
     getPostById,
     updatePost,
     deletePost,
-    getMyPosts
+    getMyPosts,
+    getStats
 } = require("../controllers/postController");
 
 router.post("/", protect, createPost);
 router.get("/", getAllPosts);
 router.get("/my-posts", protect, getMyPosts);
+router.get("/stats",getStats);
 router.get("/:id", optionalAuth, getPostById);
 router.put("/:id", protect, updatePost);
 router.delete("/:id", protect, deletePost);
+
 
 module.exports = router;

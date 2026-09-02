@@ -198,7 +198,30 @@
 
     box-shadow:none;
 }
+.forgot-password-link {
 
+    text-align:right;
+
+    margin-top:-10px;
+
+    margin-bottom:6px;
+}
+
+.forgot-password-link span {
+
+    color:#2563eb;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.forgot-password-link span:hover {
+
+    text-decoration:underline;
+}
 /* ===================================
    REGISTER LINK
 =================================== */

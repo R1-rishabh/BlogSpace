@@ -1,11 +1,11 @@
-import {usestate} from "react";
+import {useState} from "react";
 import {Link} from "react-router-dom";
-import axios from axios;
+import api from "../api/axios";
 import Navbar from "../components/Navbar";
 import PageLayout from "../layouts/PageLayout";
 import "./ForgotPassword.css";
 
-function forgotPassword(){
+function ForgotPassword(){
     const [email ,setEmail] = useState("");
     const [message ,setMessage] = useState("");
     const [error , setError] = useState("");
@@ -19,7 +19,7 @@ function forgotPassword(){
         setSubmitting(true); 
 
         try{
-            const response = await axios.post(
+            const response = await api.post(
                 "http://localhost:5000/api/auth/forgot-password",
                 {email}
             );
