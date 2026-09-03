@@ -1,5 +1,5 @@
 import { Link , useNavigate} from "react-router-dom";
-import { FaPenNib, FaHome, FaUserCircle } from "react-icons/fa";
+import { FaPenNib, FaHome, FaUserCircle , FaSignInAlt, FaUserPlus } from "react-icons/fa";
 import { useContext, useEffect, useRef, useState } from "react";
 import AuthContext from "../context/AuthContext";
 
@@ -17,12 +17,12 @@ function Navbar() {
     localStorage.removeItem("user");
     setIsLoggedIn(false);
     setDropdownOpen(false);
-    console.log(
-        "Token after logout:",
-        localStorage.getItem("token")
-    );
-    navigate("/");
+
+    setTimeout(() => {
+        navigate("/");
+    }, 100);
 };
+
     useEffect(()=>{
         function handleClickOutside(e){
             if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -96,12 +96,14 @@ function Navbar() {
                 <>
                     <Link to="/login">
                             <button className="login-btn">
+                                <FaSignInAlt/>
                                 Login
                             </button>
                         </Link>
 
                         <Link to="/register">
-                            <button className="register-btn">
+                            <button className="nav-register-btn">
+                                <FaUserPlus/>
                                 Register
                             </button>
                     </Link>
@@ -112,6 +114,6 @@ function Navbar() {
 
     </nav>
   );
-}
+};
 
 export default Navbar;

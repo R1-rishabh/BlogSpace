@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import PageLayout from "../layouts/PageLayout";
 import "./Register.css";
+import { FaEyeSlash ,FaEye } from "react-icons/fa";
 
 function Register() {
     const navigate = useNavigate();
@@ -11,9 +12,13 @@ function Register() {
     const[username , setUsername] = useState("");
     const[email,setEmail] = useState("");
     const[password , setPassword] = useState("");
-
+    const[showPassword ,setShowPassword] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(password.length < 8){
+            alert("Password must be at least 8 charcaters long.");
+            return;
+        }
         try{
             const response = await axios.post(
              "http://localhost:5000/api/auth/register",
@@ -78,8 +83,10 @@ function Register() {
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
+
+                            <div className="password-input-wrapper">
                             <input 
-                                type="passowrd"
+                                type={showPassword ? "text" : "Password"}
                                 id="password"
                                 placeholder="Enter your password"
                                 value={password}
@@ -87,6 +94,18 @@ function Register() {
                                     setPassword(e.target.value)
                                 }
                             />
+
+                            <span 
+                                className="toggle-password-icon"
+                                onClick={()=> setShowPassword((prev) => !prev)}>
+                                    {showPassword ? <FaEyeSlash/> : <FaEye/>}
+                            </span>
+                            </div>
+                            {password.length > 0 && password.length < 8 && (
+                                <p className="password-hint">
+                                    Password should be at least 8 charachters long.
+                                </p>
+                            )}
                         </div>
                         <button 
                             type="submit"

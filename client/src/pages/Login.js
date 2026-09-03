@@ -11,10 +11,11 @@ function Login(){
     const { setIsLoggedIn ,setUser } = useContext(AuthContext);
     const[email , setEmail] = useState("");
     const[password , setPassword] = useState("");
+    const[error , setError] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setError("");
         try{
             const response = await axios.post(
                 "http://localhost:5000/api/auth/login",
@@ -23,33 +24,22 @@ function Login(){
                     password
                 }
             );
-
-
-            console.log("Login Response:" , response.data);
             localStorage.setItem("token", response.data.token);
             localStorage.setItem(
                 "user",
                 JSON.stringify(response.data.user)
             );
-            console.log("LOGIN: isLoggedIn set to TRUE");
+
             setUser(response.data.user);
             setIsLoggedIn(true);
-
-            console.log(
-                "Stored Token:",
-                localStorage.getItem("token")
-                
-            );
-
-            console.log("Logged In User :",
-                response.data.user
-            );
 
             navigate("/");
 
         } catch(error){
             console.log("Login Error :" , error);
-            console.log("Backend Reponse:", error.response?.data);
+            setError(
+                error.response?.data?.message || "Something went wrong. Please try again."
+            );
         }
     };
 
@@ -102,6 +92,9 @@ function Login(){
                                 Forgot Password?
                             </span>
                         </p>
+
+                        {error && <p className="error-text">{error}</p>}
+
                         <button
                             type="submit"
                             className="login-btn"

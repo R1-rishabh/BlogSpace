@@ -101,7 +101,7 @@
 .home-btn,
 .write-btn,
 .login-btn,
-.register-btn{
+.nav-register-btn{
 
     display:flex;
     align-items:center;
@@ -124,6 +124,8 @@
     font-size:17px;
     font-weight:600;
 
+    line-height: 1;
+
     box-sizing:border-box;
 
     transition:.3s;
@@ -144,6 +146,16 @@
     background:white;
 
     box-shadow:0 10px 25px rgba(37,99,235,.18);
+}
+
+.home-btn svg,
+.write-btn svg,
+.login-btn svg,
+.register-btn svg{
+
+    display:block;
+
+    flex-shrink:0;
 }
 
 /* Write */
@@ -319,7 +331,7 @@
     box-shadow:0 10px 25px rgba(37,99,235,.18);
 }
 
-.register-btn{
+.nav-register-btn{
 
     color:white;
 
@@ -330,7 +342,7 @@
     );
 }
 
-.register-btn:hover{
+.nav-register-btn:hover{
 
     transform:translateY(-3px);
 

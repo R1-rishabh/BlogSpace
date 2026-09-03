@@ -220,7 +220,25 @@
 
 .forgot-password-link span:hover {
 
-    text-decoration:underline;
+    text-decoration:none;
+}
+.error-text{
+
+    color:#dc2626;
+
+    font-size:14px;
+
+    text-align:center;
+
+    margin:-8px 0 0;
+
+    background:#fef2f2;
+
+    border:1px solid #fecaca;
+
+    border-radius:10px;
+
+    padding:10px 14px;
 }
 /* ===================================
    REGISTER LINK
@@ -248,7 +266,7 @@
 
 .register-link span:hover{
 
-    text-decoration:underline;
+    text-decoration:none;
 }
 
 /* ===================================

@@ -98,7 +98,8 @@
 }
 
 .post-card a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    transform: scale(1.05);
 }
 .search-bar-container {
     max-width: 500px;

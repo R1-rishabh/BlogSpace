@@ -1,12 +1,13 @@
 import "./Header.css";
-import { useState , useEffect } from "react";
+import { useState , useEffect,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaPenNib, FaArrowRight, FaBookOpen, FaUsers } from "react-icons/fa";
 import api from "../api/axios";
+import AuthContext from "../context/AuthContext";
 function Header() {
 
     const navigate = useNavigate();
-
+    const {isLoggedIn} = useContext(AuthContext);
     const [stats , setStats] = useState({
         totalPosts : 0,
         totalViews : 0,
@@ -26,7 +27,7 @@ function Header() {
 
     const formatNumber = (num) => {
         if(num >=1000){
-            return (num / 1000) .toFixed(1) + "K";
+            return (num / 1000).toFixed(1) + "K";
         }
         return num;
     };
@@ -55,7 +56,13 @@ function Header() {
 
                 <button
                     className="hero-btn"
-                    onClick={() => navigate("/create")}
+                    onClick={() => {
+                        if(isLoggedIn){
+                            navigate("/create");
+                        }else {
+                            navigate("/register");
+                        }
+                    }}
                 >
                     <FaPenNib />
                     Create New Post

@@ -148,6 +148,7 @@
 
 .read-more:hover{
 
+    text-decoration: none;
     gap:14px;
 }
 
