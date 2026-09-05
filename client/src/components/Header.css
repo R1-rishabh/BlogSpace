@@ -28,10 +28,6 @@
     background-repeat:no-repeat;
 }
 
-/* =========================
-   TITLE
-========================= */
-
 .hero h1{
 
     font-size:68px;
@@ -46,13 +42,11 @@
     margin-bottom:10px;
 }
 
-/* =========================
-   PARAGRAPH
-========================= */
-
 .hero p{
 
     width:700px;
+
+    max-width:90%;
 
     font-size:23px;
 
@@ -65,10 +59,6 @@
     margin-bottom:38px;
 }
 
-/* =========================
-   BUTTONS
-========================= */
-
 .hero-buttons{
 
     display:flex;
@@ -76,6 +66,10 @@
     gap:18px;
 
     margin-bottom:35px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
 }
 
 .hero-btn{
@@ -160,10 +154,6 @@
     box-shadow:0 15px 35px rgba(0,0,0,.10);
 }
 
-/* =========================
-   STATS
-========================= */
-
 .hero-stats{
 
     display:flex;
@@ -175,6 +165,8 @@
     justify-content:center;
 
     margin-bottom:10px;
+
+    flex-wrap:wrap;
 }
 
 .stat{
@@ -230,4 +222,150 @@
     color:#374151;
 
     font-weight:500;
+}
+
+@media (max-width:1024px){
+
+    .hero h1{
+
+        font-size:52px;
+    }
+
+    .hero p{
+
+        width:600px;
+
+        font-size:19px;
+    }
+
+    .hero-stats{
+
+        gap:30px;
+    }
+
+    .stat-icon{
+
+        width:56px;
+
+        height:56px;
+    }
+
+    .stat h3{
+
+        font-size:26px;
+    }
+}
+
+@media (max-width:768px){
+
+    .hero{
+
+        padding:40px 20px;
+
+        min-height:65vh;
+    }
+
+    .hero h1{
+
+        font-size:38px;
+
+        letter-spacing:-1px;
+    }
+
+    .hero p{
+
+        width:100%;
+
+        font-size:16px;
+
+        margin-bottom:28px;
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+        width:100%;
+
+        max-width:320px;
+    }
+
+    .hero-btn,
+    .browse-btn{
+
+        width:100%;
+
+        padding:14px 24px;
+
+        font-size:15px;
+    }
+
+    .hero-stats{
+
+        gap:20px;
+    }
+
+    .stat{
+
+        gap:10px;
+    }
+
+    .stat-icon{
+
+        width:48px;
+
+        height:48px;
+
+        border-radius:14px;
+    }
+
+    .stat-icon svg{
+
+        font-size:22px;
+    }
+
+    .stat h3{
+
+        font-size:20px;
+    }
+
+    .stat span{
+
+        font-size:13px;
+    }
+}
+
+@media (max-width:480px){
+
+    .hero h1{
+
+        font-size:30px;
+    }
+
+    .hero p{
+
+        font-size:14px;
+    }
+
+    .hero-stats{
+
+        gap:14px;
+    }
+
+    .stat-icon{
+
+        width:42px;
+
+        height:42px;
+    }
+
+    .stat h3{
+
+        font-size:17px;
+    }
+
+    .stat span{
+
+        font-size:11px;
+    }
 }

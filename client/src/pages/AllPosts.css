@@ -65,6 +65,7 @@
     display: flex;
     gap: 9px;
     align-items: center;
+    flex-wrap: wrap;
 
     color: #64748b;
     font-size: 14px;
@@ -147,18 +148,89 @@
     cursor: pointer;
 }
 
-@media (max-width: 900px) {
-    .posts-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+@media (max-width: 1024px) {
 
-@media (max-width: 600px) {
-    .posts-grid {
-        grid-template-columns: 1fr;
+    .all-posts-page {
+        padding: 45px 5%;
     }
 
     .all-posts-header h1 {
         font-size: 40px;
+    }
+
+    .all-posts-header p:last-child {
+        font-size: 16px;
+    }
+
+    .posts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .post-card {
+        padding: 22px;
+    }
+
+    .post-card h2 {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .all-posts-page {
+        padding: 35px 5%;
+    }
+
+    .all-posts-header h1 {
+        font-size: 30px;
+    }
+
+    .all-posts-header p:last-child {
+        font-size: 15px;
+    }
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .post-card {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .post-card h2 {
+        font-size: 19px;
+    }
+
+    .post-card p {
+        font-size: 14px;
+        min-height: 0;
+    }
+
+    .search-input {
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .all-posts-header h1 {
+        font-size: 24px;
+    }
+
+    .post-card {
+        padding: 16px;
+    }
+
+    .post-card-top {
+        font-size: 13px;
+        gap: 6px;
+    }
+
+    .create-post-btn {
+        width: 100%;
     }
 }

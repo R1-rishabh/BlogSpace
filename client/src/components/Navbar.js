@@ -51,7 +51,7 @@ function Navbar() {
             <Link to="/">
                 <button className="home-btn">
                     <FaHome />
-                    Home
+                    <span>Home</span>
                 </button>
             </Link>
 
@@ -60,7 +60,7 @@ function Navbar() {
                     <Link to="/create">
                         <button className="write-btn">
                             <FaPenNib />
-                            Write a Post
+                            <span>Write a Post</span>
                         </button>
                     </Link>
 
@@ -97,14 +97,14 @@ function Navbar() {
                     <Link to="/login">
                             <button className="login-btn">
                                 <FaSignInAlt/>
-                                Login
+                                <span>Login</span>
                             </button>
                         </Link>
 
                         <Link to="/register">
                             <button className="nav-register-btn">
                                 <FaUserPlus/>
-                                Register
+                                <span>Register</span>
                             </button>
                     </Link>
                 </>

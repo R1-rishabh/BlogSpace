@@ -50,7 +50,12 @@ function CreatePost(){
 
             setTitle("");
             setContent("");
-            navigate("/");
+            
+            if(id){
+                navigate(-1);
+            }else {
+                navigate("/");
+            }
         } catch(error){
             console.log(error);
         }
@@ -61,6 +66,12 @@ function CreatePost(){
              <div className="create-page">
                 <Navbar />
         <div className="create-post-container">
+            <button 
+                    type="button"
+                    className="back-top-btn"
+                    onClick={() => navigate(-1)}>
+                        ← Back
+             </button>
         <h1>
             {id ? "Edit Your Story." : " Create New Story."}
         </h1>
